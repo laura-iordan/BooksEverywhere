@@ -24,7 +24,7 @@ if(!isset($_SESSION['rol'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Librarie Admin</title>
+    <title>Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

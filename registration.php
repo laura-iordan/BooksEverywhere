@@ -54,7 +54,6 @@ if(isset($_POST['submit'])){
                           <label for="role">Selecteaza:</label>
                             <select name="role" class="form-control" id="role">
                               <option value="1">Elev</option>
-                              <option value="2">Administrator</option>
                               <option value="3">Utilizator</option>
                             </select>
                         </div>

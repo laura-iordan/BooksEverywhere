@@ -1,9 +1,11 @@
-<?php 
+<?php
 
 function confirmQuery($result){
     global $connection;
     if(!$result){
         die("QUERY FAILED". mysqli_error($connection));
+    } else{
+      echo "Success!";
     }
 }
 
@@ -44,7 +46,7 @@ function findAllCategorii(){
 function deleteCategorii(){
     global $connection;
     if(isset($_GET['delete'])){
-        $cat_id_s = $_GET['delete']; 
+        $cat_id_s = $_GET['delete'];
         $query = "DELETE FROM categorii WHERE cat_id = {$cat_id_s} ";
         $delete_query = mysqli_query($connection, $query);
         header("Location: categories.php");

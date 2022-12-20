@@ -12,8 +12,8 @@ include "includes/navigation.php";
 
 ?>
 
-    <div>
-        <img src="images/books-1617327__340.jpg" width="100%" height="500" alt="">
+    <div style="margin-top: 2rem; margin-bottom: 2rem">
+        <img src="images\pexels-pixabay-159711.jpg" width="100%" height="600" alt="">
     </div>
 
 
@@ -26,8 +26,8 @@ include "includes/navigation.php";
             <div class="col-md-8">
 
             <h1 class="page-header">
-                    IMPRUMUTA
-                    <small>Secondary Text</small>
+                    BIBLIOTECA
+                    <small></small>
                 </h1>
 
                 <div class="grid-container">
@@ -42,11 +42,40 @@ include "includes/navigation.php";
                             $produs_autor  = $row['autor'];
                             $produs_imagine  = $row['imagine'];
                             $produs_descriere  = $row['descriere'];
+                            $categorie = $row['categorie'];
+
+                            $query = "SELECT * FROM categorie WHERE cat_titlu = '{$categorie}'";
+                            $result = mysqli_query($connection, $query);
+
+                            if (mysqli_num_rows($result) == 0) {
+                              $query = "INSERT INTO `categorie`(`cat_titlu`) VALUES ('{$categorie}')";
+                              $insert_query = mysqli_query($connection, $query);
+                            }
+
+
 
 
                             ?>
                 <div class="grid-item">
-                <h2>
+                  <div class="card text-center" style="width: 15rem; height: 40rem">
+
+                      <a class="" href="book.php?p_id=<?php echo $produs_id; ?>">
+
+                          <img class="card-img-center img-rounded" style="height: 16rem" src="images/<?php echo $produs_imagine ?>" alt="">
+
+
+                      </a>
+
+
+                    <div class="card-body">
+                      <h3><a href="book.php?p_id=<?php echo $produs_id; ?>"><?php echo $produs_titlu ?></a></h4>
+                      <h5 class="card-title" >de <a href="book.php?p_id=<?php echo $produs_id; ?>"><?php echo $produs_autor ?></a></h5>
+                      <p class="card-text"><a class="btn btn-primary" href="book.php?p_id=<?php echo $produs_id; ?>">Citeste mai mult<span class="glyphicon glyphicon-chevron-right"></span></a></p>
+
+
+                    </div>
+                  </div>
+                <!--<h2>
                     <a href="book.php?p_id=<?php echo $produs_id; ?>"><?php echo $produs_titlu ?></a>
                 </h2>
                 <p class="lead">
@@ -57,9 +86,8 @@ include "includes/navigation.php";
                     <img class="img-responsive" width="100" src="images/<?php echo $produs_imagine ?>" alt="">
                 </a>
                 <hr>
-                <!-- <p><?php echo $produs_descriere ?></p> -->
-                <a class="btn btn-primary" href="book.php?p_id=<?php echo $produs_id; ?>">Citeste mai mult<span class="glyphicon glyphicon-chevron-right"></span></a>
-
+                 <p><?php echo $produs_descriere ?></p>
+                <a class="btn btn-primary" href="book.php?p_id=<?php echo $produs_id; ?>">Citeste mai mult<span class="glyphicon glyphicon-chevron-right"></span></a>-->
                 <hr>
                 </div>
 
@@ -72,15 +100,11 @@ include "includes/navigation.php";
 
 
 
-
-                <!-- First Blog Post -->
-
-
             </div>
 
 
 
-            <!-- Blog Sidebar Widgets Column -->
+
 
 <?php
 

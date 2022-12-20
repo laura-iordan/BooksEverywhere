@@ -16,10 +16,10 @@
 
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $_SESSION['username']; ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -44,36 +44,40 @@
                         <a href="./contul_meu.php"><i class="fa fa-fw fa-wrench"></i> Contul meu</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#produse_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Contul meu <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="produse_dropdown" class="collapse">
-                            <li>
-                                <a href="./books.php">Vizualizare produse</a>
-                            </li>
-                            <li>
-                                <a href="books.php?source=add_book">Adaugare produse</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
                         <a href="./favorite.php"><i class="fa fa-fw fa-wrench"></i> Favorite</a>
                     </li>
-                    <li class="active">
-                        <a href="shop_cart.php"><i class="fa fa-fw fa-file"></i>Cos de cumparaturi</a>
+                    <li>
+                        <a href="./biblioteca_mea.php"><i class="fa fa-fw fa-wrench"></i> Biblioteca mea </a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Utilizatori <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#donate_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Carti donate <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="donate_dropdown" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="./books.php">Vizualizare carti donate</a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="books.php?source=add_book">Adaugare carti</a>
                             </li>
                         </ul>
                     </li>
+
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#solicitate_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Carti solicitate <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="solicitate_dropdown" class="collapse">
+                            <li>
+                                <a href="./book_s.php">Vizualizare carti solicitate</a>
+                            </li>
+                            <li>
+                                <a href="book_s.php?source=add_book">Adaugare carti</a>
+                            </li>
+                        </ul>
                     </li>
+
+                    <li>
+                        <a href="./recenzie.php"><i class="fa fa-fw fa-wrench"></i> Recenziile mele </a>
+                    </li>
+
+
                 </ul>
             </div>
 

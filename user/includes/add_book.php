@@ -1,22 +1,19 @@
-<?php 
+<?php
 
 if(isset($_POST['add_book'])){
-    $produs_titlu = $_POST['titlu'];
-    $produs_categorie_id = $_POST['produs_categorie'];
-    $produs_autor = $_POST['autor'];
+    $carte_titlu = $_POST['titlu'];
+    $carte_autor = $_POST['autor'];
 
-    $produs_imagine = $_FILES['imagine']['name'];
-    $produs_imagine_tmp = $_FILES['imagine']['tmp_name'];
+    $carte_imagine = $_FILES['imagine']['name'];
+    $carte_imagine_tmp = $_FILES['imagine']['tmp_name'];
 
-    $produs_descriere = $_POST['descriere'];
-    $produs_pret = $_POST['pret'];
-    $produs_cantitate = $_POST['cantitate'];
-    $produs_tags = $_POST['tags'];
+    $carte_descriere = $_POST['descriere'];
+    $carte_tags = $_POST['tags'];
 
-    move_uploaded_file($produs_imagine_tmp, "../images/$produs_imagine");
-
-    $query = "INSERT INTO produse(produs_categorie_id, produs_titlu, produs_autor, produs_imagine, produs_descriere, produs_pret, produs_cantitate, produs_tags) ";
-    $query .= "VALUE({$produs_categorie_id}, '{$produs_titlu}', '{$produs_autor}', '{$produs_imagine}', '{$produs_descriere}', {$produs_pret}, {$produs_cantitate}, '{$produs_tags}') ";
+    move_uploaded_file($carte_imagine_tmp, "../images/$carte_imagine");
+    $user_id = $_SESSION['id'];
+    $query = "INSERT INTO donate(id_user, titlu, autor, imagine, descriere, tags) ";
+    $query .= "VALUE({$user_id}, '{$carte_titlu}', '{$carte_autor}', '{$carte_imagine}', '{$carte_descriere}', '{$carte_tags}') ";
 
     $add_book_query = mysqli_query($connection, $query);
 
@@ -42,25 +39,6 @@ if(isset($_POST['add_book'])){
     </div>
 
     <div class="form-group">
-        <label for="id_categorie">Id categorie carte</label>
-        <select name="produs_categorie" id="">
-            <?php 
-                $query = "SELECT * FROM categorii";
-                $select_categorii = mysqli_query($connection, $query);
-                confirmQuery($select_categorii);
-            
-                while($row = mysqli_fetch_assoc($select_categorii)){
-                    $cat_id  = $row['cat_id'];
-                    $cat_titlu  = $row['cat_titlu'];
-                    echo "<option value='{$cat_id}'>{$cat_titlu}</option>";
-                }
-
-                
-            ?>
-        </select>
-    </div>
-
-    <div class="form-group">
         <label for="imagine">Imagine carte</label>
         <input type="file" class="form-control" name="imagine">
     </div>
@@ -68,16 +46,6 @@ if(isset($_POST['add_book'])){
     <div class="form-group">
         <label for="descriere">Descriere carte</label>
         <textarea class="form-control" name="descriere" id="" cols="30" rows="10"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="pret">Pret carte</label>
-        <input type="text" class="form-control" name="pret">
-    </div>
-
-    <div class="form-group">
-        <label for="cantitate">Cantitate</label>
-        <input type="text" class="form-control" name="cantitate">
     </div>
 
     <div class="form-group">

@@ -5,9 +5,11 @@
 
 <?php
 if(!isset($_SESSION['rol'])){
+
     header("Location: ../index.php");
 } else{
     if($_SESSION['rol'] != 1){
+      echo "Altceva";
         header("Location: ../index.php");
     }
 }

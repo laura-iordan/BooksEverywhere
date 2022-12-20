@@ -5,7 +5,7 @@
 
                 <!-- Blog Search Well -->
                 <div class="well">
-                    <h4>Cautare</h4>
+                    <h3>Cautare</h3>
                     <form action="search.php" method="post">
                         <div class="input-group">
                             <input name="search" type="text" class="form-control" >
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="well">
-                    <h4>Inregistrare</h4>
+                    <h3>Inregistrare</h3>
                     <form action="includes/login.php" method="post">
                         <div class="form-group">
                             <input name="username" type="text" class="form-control" placeholder="Username">
@@ -47,7 +47,7 @@
                          $select_categorii_sidebar = mysqli_query($connection, $query);
                     ?>
 
-                    <h4>Categorii</h4>
+                    <h3>Categorii</h3>
                     <div class="row">
                         <div class="col-lg-12">
 
@@ -57,7 +57,7 @@
                                     while($row = mysqli_fetch_assoc($select_categorii_sidebar)){
                                         $cat_id  = $row['cat_id'];
                                         $cat_titlu  = $row['cat_titlu'];
-                                        echo "<li><a href='category.php?category= $cat_id'>{$cat_titlu}</a></li>";
+                                        echo "<li><h4><a href='category.php?category=$cat_titlu'>{$cat_titlu}</a></h4></li>";
 
                                     }
                                 ?>
@@ -70,6 +70,6 @@
                 </div>
 
                 <!-- Side Widget Well -->
-                <?php include "widget.php";?>
+                <?php// include "widget.php";?>
 
             </div>

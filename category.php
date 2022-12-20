@@ -22,17 +22,17 @@ include "includes/navigation.php";
             <div class="col-md-8">
 
             <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
+
+                    <small></small>
                 </h1>
 
                 <div class="grid-container">
                 <?php
                 if(isset($_GET['category'])){
-                    $categorie_id = $_GET['category'];
+                    $categorie = $_GET['category'];
                 }
 
-                $query = "SELECT * FROM books WHERE id_categorie = $categorie_id";
+                $query = "SELECT * FROM books WHERE categorie = '{$categorie}'";
                 $select_all_produse_query = mysqli_query($connection_b1, $query);
 
 
@@ -54,7 +54,7 @@ include "includes/navigation.php";
                 </p>
                 <hr>
                 <a href="book.php?p_id=<?php echo $carte_id; ?>">
-                    <img class="img-responsive" width="100" src="images/<?php echo $carte_imagine ?>" alt="">
+                    <img class="" width="100" src="images/<?php echo $carte_imagine ?>" alt="">
                 </a>
                 <hr>
 

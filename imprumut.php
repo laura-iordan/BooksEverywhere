@@ -77,7 +77,7 @@ include "includes/header.php";
    }
 
    if(!isset($id_carte_imprumutata)){
-     $query = "INSERT INTO imprumutate (id_biblioteca, id_carte, id_user, id_categorie, titlu, autor, data_restituire) VALUES ('{$id_biblioteca}', '{$id_carte}','{$id_user}', '{$cat_id}', '{$titlu}', '{$autor}', '{$data_restituire}')";
+     $query = "INSERT INTO imprumutate (id_biblioteca, id_carte, id_user, id_categorie, titlu, autor, data_imprumut, data_restituire) VALUES ('{$id_biblioteca}', '{$id_carte}','{$id_user}', '{$cat_id}', '{$titlu}', '{$autor}', '{$current_date}', '{$data_restituire}')";
      $insert_query = mysqli_query($connection, $query);
 
      if(!$insert_query)
@@ -93,76 +93,18 @@ else
 
     $query = "UPDATE books SET data_imprumut='{$current_date}', data_restituire='{$data_restituire}' WHERE id_carte = {$id_carte}";
     $insert_query = mysqli_query($connection_b1, $query);
-    header("Location: index.php");
+
+    if(isset($_SESSION['rol'])){
+      if($_SESSION['rol'] == 1){
+        header("Location: elev/contul_meu.php");
+      } else if ($_SESSION['rol'] == 2) {
+        header("Location: admin/contul_meu.php");
+      } else if($_SESSION['rol'] == 3){
+        header("Location: user/contul_meu.php");
+      }}
   } else{
     header("Location: book.php?p_id={$id_carte}");
   }
-}
-else if(isset($_GET['book_id_fav'])){
-  $carte_id = $_GET['book_id_fav'];
-
-  $query = "SELECT * FROM books WHERE id_carte = {$carte_id}";
-  $select_carte_query = mysqli_query($connection_b1, $query);
-
-          while($row = mysqli_fetch_assoc($select_carte_query)){
-
-              $titlu  = $row['titlu'];
-              $autor  = $row['autor'];
-              $id_carte= $row['id_carte'];
-              $categorie = $row['categorie'];
-          }
-    $query = "SELECT * FROM categorie WHERE cat_titlu = '{$categorie}'";
-    $select_cat_query = mysqli_query($connection, $query);
-
-            while($row = mysqli_fetch_assoc($select_cat_query)){
-
-                $cat_id  = $row['cat_id'];
-
-            }
-    if(!isset($cat_id)){
-      $query = "INSERT INTO `categorie`(`cat_titlu`) VALUES ('$categorie')";
-      $insert_query = mysqli_query($connection, $query);
-
-      $query = "SELECT * FROM categorie WHERE cat_titlu = '{$categorie}'";
-      $select_cat_query = mysqli_query($connection, $query);
-
-              while($row = mysqli_fetch_assoc($select_cat_query)){
-
-                  $cat_id  = $row['cat_id'];
-
-              }
-    }
-
-
-          $username = $_SESSION["username"];
-          $id_user = $_SESSION['id'];
-
-          $query = "SELECT * FROM favorite WHERE id_carte = {$id_carte}";
-          $select_query = mysqli_query($connection, $query);
-          while($row = mysqli_fetch_assoc($select_query)){
-              $id_carte_fav= $row['id_carte'];
-          }
-
-          if(!isset($id_carte_fav)){
-            $query = "INSERT INTO favorite (id_carte, id_user, id_categorie, titlu, autor) VALUES ('{$id_carte}','{$id_user}', '{$cat_id}', '{$titlu}', '{$autor}')";
-            $insert_query = mysqli_query($connection, $query);
-
-            if(!$insert_query)
-       {
-           echo mysqli_error($connection);
-           die();
-       }
-       else
-       {
-           echo "Query succesfully executed!";
-       }
-
-
-
-           header("Location: index.php");
-         } else{
-           header("Location: book.php?p_id={$id_carte}");
-         }
 }
 
 ?>

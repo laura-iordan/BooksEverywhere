@@ -22,8 +22,8 @@
             <div class="col-md-8">
 
             <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
+
+                    <small></small>
                 </h1>
 
                 <div class="grid-container">
@@ -64,7 +64,7 @@
                             </p>
                             <hr>
                             <a href="book.php?p_id=<?php echo $carte_id; ?>">
-                            <img class="img-responsive" src="images/<?php echo $carte_imagine ?>" alt="">
+                            <img class="" src="images/<?php echo $carte_imagine ?>" alt="">
                             </a>
                             <hr>
 

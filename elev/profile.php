@@ -95,7 +95,12 @@
                         </div>
 
                         <div class="form-group">
-                            <input class="btn btn-primary" type="submit" name='<?php if(isset($email)){echo "update_profile";} else{echo "create_profile";} ?>' value='<?php if(isset($email)){echo "Actualizeaza";} else{echo "Salveaza";} ?>'>
+                          <?php if(isset($email)){ ?>
+                            <input class="btn btn-primary" type="submit" name="update_profile" value="Salveaza">
+                        <?php   } else{ ?>
+                            <input class="btn btn-primary" type="submit" name="create_profile" value="Salveaza">
+                        <?php  } ?>
+
                         </div>
 
                     </form>

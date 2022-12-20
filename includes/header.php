@@ -19,6 +19,7 @@
 
     <!-- Custom CSS -->
     <link href="css/index-home.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 

@@ -1,34 +1,48 @@
 <?php include "includes/admin_header.php"; ?>
 
-<?php 
+<?php
 
-    if(isset($_SESSION["username"])){
-    $username = $_SESSION["username"];
-    $query = "SELECT * FROM utilizatori WHERE u_username = '{$username}'";
+    if(isset($_SESSION["username"])){    $username = $_SESSION["username"];
+    $id_user = $_SESSION['id'];
+    $query = "SELECT * FROM user_utilizator WHERE id_user = '{$id_user}'";
     $select_profile_query = mysqli_query($connection, $query);
+
     while($row = mysqli_fetch_array($select_profile_query)){
-        $email = $row['u_email'];
-        $username = $row['u_username'];
-        $password = $row['u_parola'];
-        $nume = $row['u_nume'];
-        $prenume = $row['u_prenume'];
-        $rol = $row['u_role'];
+        $nume = $row['nume'];
+        $prenume = $row['prenume'];
+        $localitate = $row['localitate'];
+        $email = $row['email'];
     }
 
-    if(isset($_POST['update_profile'])){
-        $u_nume = $_POST['nume'];
-        $u_prenume = $_POST['prenume'];
-        $username = $_POST['username'];
-        $u_email = $_POST['email'];
-        $u_password = $_POST['password'];
+      if(isset($_POST['update_profile'])){
+          $nume = $_POST['nume'];
+          $prenume = $_POST['prenume'];
+          $localitate = $_POST['localitate'];
 
-        $query = "UPDATE utilizatori SET u_nume = '{$u_nume}',  u_prenume = '{$u_prenume}', ";
-        $query .= "u_username = '{$username}', u_email = '{$u_email}',  u_parola = '{$u_password}' WHERE u_username = '{$username}' ";
-        $update_query = mysqli_query($connection, $query);
-        confirmQuery($update_query);
-        header("Location: profile.php");
+          $email = $_POST['email'];
+
+          $query = "UPDATE user_utilizator SET nume = '{$nume}',  prenume = '{$prenume}', ";
+          $query .= "localitate = '{$localitate}', email = '{$email}' WHERE id_user = '{$id_user}' ";
+          $update_query = mysqli_query($connection, $query);
+          confirmQuery($update_query);
+          header("Location: profile.php");
+  }
+  if(isset($_POST['create_profile'])){
+      $nume = $_POST['nume'];
+      $prenume = $_POST['prenume'];
+      $localitate = $_POST['localitate'];
+
+      $email = $_POST['email'];
+
+      $query = "INSERT INTO `user_utilizator`(`id_user`, `nume`, `prenume`, `localitate`, `email`) VALUES ('{$id_user}', '{$nume}','{$prenume}','{$localitate}','{$email}')";
+      $update_query = mysqli_query($connection, $query);
+      confirmQuery($update_query);
+
+      header("Location: profile.php");
 }
-    }
+
+
+}
 
 ?>
 
@@ -50,40 +64,38 @@
                         <small><?php echo $_SESSION['username']; ?></small>
                     </h1>
 
+
                     <form action="" method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label for="nume">Nume</label>
-                            <input value="<?php echo $nume ?>" type="text" class="form-control" name="nume">
+                            <input value="<?php if(isset($nume)){echo $nume;} ?>" type="text" class="form-control" name="nume">
                         </div>
 
                         <div class="form-group">
                             <label for="prenume">Prenume</label>
-                            <input value="<?php echo $prenume ?>" type="text" class="form-control" name="prenume">
+                            <input value="<?php if(isset($prenume)){echo $prenume;} ?>" type="text" class="form-control" name="prenume">
                         </div>
 
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input value="<?php echo $username ?>" type="text" class="form-control" name="username">
+                            <label for="localitate">Localitate</label>
+                            <input value="<?php if(isset($localitate)){echo $localitate;}  ?>" type="text" class="form-control" name="localitate">
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input value="<?php echo $email ?>" type="email" class="form-control" name="email">
+                            <input value="<?php if(isset($email)){echo $email;} ?>" type="email" class="form-control" name="email">
                         </div>
 
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input value="<?php echo $password ?>" type="password" class="form-control" name="password">
-                        </div>
-                        <div class="form-group">
-                            <input class="btn btn-primary" type="submit" name="update_profile" value="Salveaza">
+                            <input class="btn btn-primary" type="submit" name='<?php if(isset($email)){echo "update_profile";} else{echo "create_profile";} ?>' value='<?php if(isset($email)){echo "Actualizeaza";} else{echo "Salveaza";} ?>'>
                         </div>
 
                     </form>
 
-                    
-                        
+
+
+
 
                     </div>
                 </div>

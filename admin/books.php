@@ -15,10 +15,10 @@
                     <div class="col-lg-12">
                     <h1 class="page-header">
                         Welcome to admin
-                        <small>Author</small>
+                        <small><?php echo $_SESSION['username']; ?></small>
                     </h1>
 
-                    <?php 
+                    <?php
                     if(isset($_GET['source'])){
                         $source = $_GET['source'];
                     } else{
@@ -39,7 +39,7 @@
                         break;
                     }
                     ?>
-                        
+
 
                     </div>
                 </div>

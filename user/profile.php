@@ -93,6 +93,68 @@
 
                     </form>
 
+                    <?php
+                    if(isset($_POST['change_pass'])){
+                        $parola = $_POST['password'];
+                        $c_parola = $_POST['conf_password'];
+
+                        if($parola==$c_parola){
+                            $parola = mysqli_real_escape_string($connection, $parola);
+
+                            $query = "UPDATE `users` SET `password`='{$parola}' WHERE user_id = {$id_user}";
+                            $register_user_query = mysqli_query($connection, $query);
+                            if(!$register_user_query){
+                                die("QUERY FAILED" . mysqli_error($connection));
+                            }  ?>
+                              <script>
+                                alert('Parola a fost schimbata cu succes!');
+                                document.location.href = 'profile.php';
+                              </script>
+                              ";
+                          <?php
+                        } else{ ?>
+                          <script>
+                            alert('Parolele nu sunt identice!');
+                            document.location.href = 'profile.php';
+                          </script>
+                          ";
+                      <?php  }
+                    }
+                    ?>
+
+
+                    <div class="button-group">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Schimba parola</button>
+
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-dialog" style="width: 300px;">
+                                <div class="modal-content text-center">
+                                    <div class="modal-header h5 text-white bg-primary justify-content-center">
+                                        Schimbare Parola
+                                    </div>
+                                    <div class="modal-body px-5">
+                                        <p class="py-2">
+                                            Introduceti noua parola:
+                                        </p>
+                                        <form class="" action="profile.php" method="post">
+                                          <div class="form-outline">
+                                              <input name="password" type="password" id="password" class="form-control my-3" />
+                                              <label class="form-label" for="password">Parola</label>
+                                              <input name="conf_password" type="password" id="conf_password" class="form-control my-3" />
+                                              <label class="form-label" for="conf_password">Confirmare parola</label>
+                                          </div>
+                                          <button class="btn btn-primary" name="change_pass" type="submit">Schimba parola</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+
 
 
 

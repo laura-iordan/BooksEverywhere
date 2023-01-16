@@ -16,7 +16,7 @@
 
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['username']; ?> <b class="caret"></b></a>
+                    <a href="#" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['username']; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -39,6 +39,7 @@
                     <li>
                         <a href="profile.php"><i class="fa fa-fw fa-dashboard"></i> Profil</a>
                     </li>
+
                     <li>
                         <a href="imprumuturi.php"><i class="fa fa-fw fa-dashboard"></i> Carti imprumutate</a>
                     </li>

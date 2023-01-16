@@ -127,13 +127,17 @@
 
                         if(isset($_GET['update'])){
                             $carte_id_s = $_GET['update'];
+                            echo $carte_id_s;
                             $query = "SELECT * FROM books WHERE id_carte = $carte_id_s";
                             $select_query = mysqli_query($connection_b1, $query);
-
-                            while($row = mysqli_fetch_assoc($result)){
-                                $data_restituire = $row['data_restituire'];
-                                $prelungire = $row['prelungire'];
+                            $prelungire;
+                            $data_restituire;
+                            while($row = mysqli_fetch_assoc($select_query)){
+                                echo $data_restituire = $row['data_restituire'];
+                                echo $prelungire = $row['prelungire'];
                               }
+
+
 
                               echo $data_restituire;
 
@@ -143,30 +147,39 @@
                               $month = date('m', strtotime($data_restituire));
                               $day = date('d', strtotime($data_restituire));
                               if($month < 12){
-                                if($day < 15){
+                                if($day == 15){
                                   $day = 1;
+                                  $month += 1;
                                 } else{
                                   $day = 15;
                                 }
-                                $month += 1;
+
                               } else{
-                                if($day < 15){
+                                if($day == 15){
                                   $day = 1;
+                                  $month = 1;
+                                  $year += 1;
                                 } else{
                                   $day = 15;
                                 }
-                                $month = 1;
-                                $year += 1;
+
                               }
+
+                              //$d1 = "{$month}-{$day}-{$year}";
+
+                              //$d = new DateTime($d1);
+
+                              //$timestamp = $d->getTimestamp(); // Unix timestamp
+                              //$formatted_date = $d->format('Y-m-d');
 
                               $date=date_create();
                               date_date_set($date,$year,$month,$day);
-                              $data_restituire = date_format($date,"Y/m/d");
+                              $data_restituire = date_format($date,"Y-m-d");
 
-                              $query = "UPDATE `books` SET `data_restituire`= {$data_restituire}, `prelungire` = 1 WHERE id_carte = {$carte_id_s}";
+                              $query = "UPDATE `books` SET `data_restituire`= '{$data_restituire}', `prelungire` = 1 WHERE id_carte = {$carte_id_s}";
                               $update_query = mysqli_query($connection_b1, $query);
 
-                              $query = "UPDATE `imprumutate` SET `data_restituire`= {$data_restituire} WHERE id_carte = {$carte_id_s}";
+                              $query = "UPDATE `imprumutate` SET `data_restituire`= '{$data_restituire}' WHERE id_carte = {$carte_id_s}";
                               $update_query = mysqli_query($connection, $query);
 
                             }

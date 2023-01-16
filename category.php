@@ -50,7 +50,7 @@ include "includes/navigation.php";
                     <a href="book.php?p_id=<?php echo $carte_id; ?>"><?php echo $carte_titlu ?></a>
                 </h2>
                 <p class="lead">
-                    de <a href="index.php"><?php echo $carte_autor ?></a>
+                    de <a href="book.php?p_id=<?php echo $carte_id; ?>"><?php echo $carte_autor ?></a>
                 </p>
                 <hr>
                 <a href="book.php?p_id=<?php echo $carte_id; ?>">

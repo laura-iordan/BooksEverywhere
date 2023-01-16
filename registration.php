@@ -7,13 +7,15 @@ if(isset($_POST['submit'])){
     $parola = $_POST['password'];
     $c_parola = $_POST['conf_password'];
     $role = $_POST['role'];
+    $email = $_POST['email'];
 
     if(!empty($username) && !empty($parola) && $parola==$c_parola){
         $username = mysqli_real_escape_string($connection, $username);
         $parola = mysqli_real_escape_string($connection, $parola);
         $role = mysqli_real_escape_string($connection, $role);
+        $email = mysqli_real_escape_string($connection, $email);
 
-        $query = "INSERT INTO users (username, password, role) VALUES ('{$username}', '{$parola}', '{$role}')";
+        $query = "INSERT INTO users (username, password, email, role) VALUES ('{$username}', '{$parola}', '{$email}', '{$role}')";
         $register_user_query = mysqli_query($connection, $query);
         if(!$register_user_query){
             die("QUERY FAILED" . mysqli_error($connection));
@@ -42,6 +44,10 @@ if(isset($_POST['submit'])){
                             <label for="username" class="sr-only">Username</label>
                             <input type="text" name="username" id="username" class="form-control" placeholder="Introduceti Username-ul">
                         </div>
+                        <div class="form-group">
+                            <label for="username" class="sr-only">Email</label>
+                            <input type="text" name="email" id="username" class="form-control" placeholder="Introduceti email-ul">
+                        </div>
                          <div class="form-group">
                             <label for="password" class="sr-only">Parola</label>
                             <input type="password" name="password" id="password" class="form-control" placeholder="Introduceti parola">
@@ -58,6 +64,7 @@ if(isset($_POST['submit'])){
                             </select>
                         </div>
                         <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Inregistrare">
+
                     </form>
 
                 </div>

@@ -47,7 +47,7 @@
                                   echo "<td>{$continut}</td>";
                                   echo "<td>{$data}</td>";
                                   echo "<td>{$status}</td>";
-                                  //echo "<td><a href='recenzie.php?delete={$id_recenzie}'>Sterge</a></td>";
+                                  echo "<td><a href='recenzie.php?delete={$id_recenzie}'>Sterge</a></td>";
                                   //echo "<td><a href='recenzie.php?source=update_recenzie&p_id={$id_recenzie}'>Editeaza</a></td>";
                                   echo "<tr>";
                                 }

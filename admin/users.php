@@ -18,7 +18,7 @@
                         <small>Author</small>
                     </h1>
 
-                    <?php 
+                    <?php
                     if(isset($_GET['source'])){
                         $source = $_GET['source'];
                     } else{
@@ -30,8 +30,8 @@
                         include "includes/add_user.php";
                         break;
 
-                        case 'edit_user';
-                        include "includes/edit_user.php";
+                        case 'update_user';
+                        include "includes/update_user.php";
                         break;
 
                         default:
@@ -39,7 +39,7 @@
                         break;
                     }
                     ?>
-                        
+
 
                     </div>
                 </div>

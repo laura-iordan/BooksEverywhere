@@ -21,8 +21,7 @@
                             while($rows = mysqli_fetch_assoc($result_i)){
                                 $user_id_i = $rows['user_id'];
                                 $username = $rows['username'];
-                                echo $username;
-                                echo $role = $rows['role'];
+                                $role = $rows['role'];
                                 if($role == 1){
                                   $query = "SELECT * FROM user_elev WHERE id_user = {$user_id_i}";
                                   $result = mysqli_query($connection, $query);
@@ -35,7 +34,8 @@
                                     echo "<td></td>";
                                     echo "<td></td>";
                                     echo "<td></td>";
-                                    //echo "<td><a href='books.php?source=update_book&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?source=update_user&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?delete={$user_id_i}'>Sterge</a></td>";
                                     echo "<tr>";
                                   } else{
 
@@ -51,7 +51,8 @@
                                     echo "<td>{$prenume}</td>";
                                     echo "<td>{$email}</td>";
                                     echo "<td>{$localitate}</td>";
-                                    //echo "<td><a href='books.php?source=update_book&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?source=update_user&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?delete={$user_id_i}'>Sterge</a></td>";
                                     echo "<tr>";
                                   }}
                                 }
@@ -68,7 +69,8 @@
                                     echo "<td></td>";
                                     echo "<td></td>";
                                     echo "<td></td>";
-                                    //echo "<td><a href='books.php?source=update_book&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?source=update_user&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?delete={$user_id_i}'>Sterge</a></td>";
                                     echo "<tr>";
                                   } else{
 
@@ -86,7 +88,8 @@
                                     echo "<td>{$prenume}</td>";
                                     echo "<td>{$email}</td>";
                                     echo "<td>{$localitate}</td>";
-                                    //echo "<td><a href='books.php?source=update_book&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?source=update_user&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?delete={$user_id_i}'>Sterge</a></td>";
                                     echo "<tr>";
                                   }}
                                 }
@@ -103,7 +106,8 @@
                                     echo "<td></td>";
                                     echo "<td></td>";
                                     echo "<td></td>";
-                                    //echo "<td><a href='books.php?source=update_book&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?source=update_user&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?delete={$user_id_i}'>Sterge</a></td>";
                                     echo "<tr>";
                                   } else{
 
@@ -119,7 +123,8 @@
                                     echo "<td>{$prenume}</td>";
                                     echo "<td>{$email}</td>";
                                     echo "<td>{$localitate}</td>";
-                                    //echo "<td><a href='books.php?source=update_book&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?source=update_user&p_id={$user_id_i}'>Editeaza</a></td>";
+                                    echo "<td><a href='users.php?delete={$user_id_i}'>Sterge</a></td>";
                                     echo "<tr>";
                                   }}
                                 }
@@ -127,7 +132,12 @@
                             }
                             ?>
                             <?php
-
+                            if(isset($_GET['delete'])){
+                                $user_id = $_GET['delete'];
+                                $query = "DELETE FROM users WHERE user_id = {$user_id} ";
+                                $delete_query = mysqli_query($connection, $query);
+                                header("Location: users.php");
+                            }
                             ?>
                         </tbody>
                     </table>

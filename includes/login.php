@@ -1,4 +1,5 @@
 <?php include "db.php"; ?>
+<?php include "functions.php"; ?>
 <?php ob_start(); ?>
 <?php session_start(); ?>
 
@@ -25,27 +26,39 @@ if(isset($_POST['login'])){
     }
 
     if($username !== $db_username && $password !== $db_password){
-        header('Location: ../index.php');
+      echo "
+      <script>
+        alert('Username-ul sau parola sunt gresite!');
+        document.location.href = '../index.php';
+      </script>
+      ";
+        header('Location: ../index.php?check=0');
     } else if($username === $db_username && $password === $db_password && $db_rol == 2){
         $_SESSION['username'] = $db_username;
         $_SESSION['rol'] = $db_rol;
         $_SESSION['id'] = $db_id;
 
-        header('Location: ../admin');
+        header('Location: ../index.php');
     } else if($username === $db_username && $password === $db_password && $db_rol == 1){
         $_SESSION['username'] = $db_username;
         $_SESSION['rol'] = $db_rol;
         $_SESSION['id'] = $db_id;
 
-        header('Location: ../elev');
+        header('Location: ../index.php');
     } else if($username === $db_username && $password === $db_password && $db_rol == 3){
         $_SESSION['username'] = $db_username;
         $_SESSION['rol'] = $db_rol;
         $_SESSION['id'] = $db_id;
 
-        header('Location: ../user');
+        header('Location: ../index.php');
     } else{
-        header('Location: ../registration.php');
+      echo "
+      <script>
+        alert('Username-ul sau parola sunt gresite!');
+        document.location.href = '../index.php';
+      </script>
+      ";
+        header('Location: ../index.php?check=0');
     }
 }
 ?>

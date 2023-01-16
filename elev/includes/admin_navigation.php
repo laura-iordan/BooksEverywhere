@@ -41,7 +41,7 @@
 
                     </li>
                     <li>
-                        <a href="./contul_meu.php"><i class="fa fa-fw fa-wrench"></i> Contul meu</a>
+                        <a href="./imprumuturi.php"><i class="fa fa-fw fa-wrench"></i> Contul meu</a>
                     </li>
                     <li>
                         <a href="./favorite.php"><i class="fa fa-fw fa-wrench"></i> Favorite</a>

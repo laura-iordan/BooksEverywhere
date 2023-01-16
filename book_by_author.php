@@ -51,8 +51,42 @@ include "includes/navigation.php";
 
                               ?>
 
-                              <div class="grid-container">
-                  <div class="card text-center" style="width: 60rem;">
+                              <!--<div class="grid-container">-->
+                                <div class="grid-item">
+                                  <div class="card text-center" style="width: 15rem; height: 40rem">
+
+                                      <a class="" href="book.php?p_id=<?php echo $carte_id; ?>">
+
+                                          <img class="card-img-center img-rounded" style="height: 16rem" src="images/<?php echo $carte_imagine ?>" alt="">
+
+
+                                      </a>
+
+
+                                    <div class="card-body">
+                                      <h3><a href="book.php?p_id=<?php echo $carte_id; ?>"><?php echo $carte_titlu ?></a></h4>
+                                      <h5 class="card-title" >de <a href="book.php?p_id=<?php echo $carte_id; ?>"><?php echo $carte_autor ?></a></h5>
+                                      <p class="card-text"><a class="btn btn-primary" href="book.php?p_id=<?php echo $carte_id; ?>">Citeste mai mult<span class="glyphicon glyphicon-chevron-right"></span></a></p>
+
+
+                                    </div>
+                                  </div>
+                                <!--<h2>
+                                    <a href="book.php?p_id=<?php echo $produs_id; ?>"><?php echo $produs_titlu ?></a>
+                                </h2>
+                                <p class="lead">
+                                    de <a href="book.php?p_id=<?php echo $produs_id; ?>"><?php echo $produs_autor ?></a>
+                                </p>
+                                <hr>
+                                <a href="book.php?p_id=<?php echo $produs_id; ?>">
+                                    <img class="img-responsive" width="100" src="images/<?php echo $produs_imagine ?>" alt="">
+                                </a>
+                                <hr>
+                                 <p><?php echo $produs_descriere ?></p>
+                                <a class="btn btn-primary" href="book.php?p_id=<?php echo $produs_id; ?>">Citeste mai mult<span class="glyphicon glyphicon-chevron-right"></span></a>-->
+                                <hr>
+                                </div>
+                  <!--<div class="card text-center" style="width: 60rem;">
                     <img class="card-img-top img-rounded" src="images/<?php echo $carte_imagine ?>" alt="" width="100" height="200">
                     <div class="card-body">
                       <h4><a href="book.php?p_id=<?php echo $carte_id; ?>"><?php echo $carte_titlu ?></a></h4>
@@ -87,12 +121,12 @@ include "includes/navigation.php";
                     ?>
 
                   </div>
-                </div>
+                </div>-->
 
                 <hr>
 
 
-                </div>
+                <!--</div>-->
                 </div>
 
 

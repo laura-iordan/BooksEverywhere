@@ -33,11 +33,12 @@ include "includes/navigation.php";
                 <div class="grid-container">
                 <?php
 
-                $query = "SELECT * FROM donate WHERE id_user_solicitant = 0";
+                $query = "SELECT * FROM donate WHERE id_user_solicitant IS NULL";
                 $select_all_produse_query = mysqli_query($connection, $query);
 
                         while($row = mysqli_fetch_assoc($select_all_produse_query)){
                             $id_carte  = $row['id_carte_donata'];
+                            $id_user_d = $row['id_user'];
                             $titlu  = $row['titlu'];
                             $autor  = $row['autor'];
                             $imagine  = $row['imagine'];
@@ -49,7 +50,7 @@ include "includes/navigation.php";
                 <div class="grid-item">
                   <div class="card text-center" style="width: 15rem; height: 30rem">
 
-                      <a class="" href="book.php?p_id=<?php echo $id_carte; ?>">
+                      <a class="" href="adopta_carte.php?p_id=<?php echo $id_carte; ?>">
 
                           <img class="card-img-center img-rounded" style="height: 16rem" src="images/<?php echo $imagine ?>" alt="">
 
@@ -58,8 +59,8 @@ include "includes/navigation.php";
 
 
                     <div class="card-body">
-                      <h3><a href="book.php?p_id=<?php echo $id_carte; ?>"><?php echo $titlu ?></a></h4>
-                      <h5 class="card-title">de <a href="book.php?p_id=<?php echo $id_carte; ?>"><?php echo $autor ?></a></h5>
+                      <h3><a href="adopta_carte.php?p_id=<?php echo $id_carte; ?>"><?php echo $titlu ?></a></h4>
+                      <h5 class="card-title">de <a href="adopta_carte.php?p_id=<?php echo $id_carte; ?>"><?php echo $autor ?></a></h5>
                       <p class="card-text"><a class="btn btn-primary" href="adopta_carte.php?p_id=<?php echo $id_carte; ?>">Citeste mai mult<span class="glyphicon glyphicon-chevron-right"></span></a></p>
 
 

@@ -6,11 +6,8 @@
                                 <th>Autor recenzie</th>
                                 <th>Recenzie</th>
                                 <th>Data</th>
-                                <th>Status</th>
-                                <th>Aproba</th>
-                                <th>Respinge</th>
                                 <th>Sterge</th>
-                                <th>Editeaza</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -46,9 +43,7 @@
                                   echo "<td>{$username}</td>";
                                   echo "<td>{$continut}</td>";
                                   echo "<td>{$data}</td>";
-                                  echo "<td>{$status}</td>";
                                   echo "<td><a href='recenzie.php?delete={$id_recenzie}'>Sterge</a></td>";
-                                  echo "<td><a href='recenzie.php?source=update_recenzie&p_id={$id_recenzie}'>Editeaza</a></td>";
                                   echo "<tr>";
                                 }
 

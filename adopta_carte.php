@@ -31,6 +31,7 @@ include "includes/navigation.php";
                 <?php
                 $username = $_SESSION['username'];
                 $id_user = $_SESSION['id'];
+                $role = $_SESSION['rol'];
                 if(isset($_GET['p_id'])){
                     $carte_id_p = $_GET['p_id'];
 
@@ -44,6 +45,7 @@ include "includes/navigation.php";
                             $carte_autor  = $row['autor'];
                             $carte_imagine  = $row['imagine'];
                             $carte_descriere  = $row['descriere'];
+                            $id_user_d = $row['id_user'];
                             ?>
                 <div class="card text-center" style="width: 50rem;">
                   <img class="card-img-top img-rounded" src="images/<?php echo $carte_imagine ?>" alt="" width="100" height="200">
@@ -51,8 +53,9 @@ include "includes/navigation.php";
                     <h4><a href="adopta.php?p_id=<?php echo $carte_id; ?>"><?php echo $carte_titlu ?></a></h4>
                     <h5 class="card-title">de <a href="adopta.php?p_id=<?php echo $carte_id; ?>"><?php echo $carte_autor ?></a></h5>
                     <p class="card-text"><?php echo $carte_descriere ?></p>
+                    <?php if(($id_user_d != $id_user) && $role == 1){ ?>
                     <a class="btn btn-primary" <?php if(isset($username)){ ?>href="adopt.php?book_id_i=<?php echo $carte_id; ?>"<?php } else{echo 'href="registration.php"';} ?>>Adopta <span class="glyphicon glyphicon-chevron-right"></span></a>
-
+                  <?php } ?>
                     <h6></h6>
                   </div>
                 </div>
@@ -61,7 +64,7 @@ include "includes/navigation.php";
 
               <?php } ?>
 
-              
+
 
               <hr>
 
@@ -91,7 +94,7 @@ include "includes/navigation.php";
                   echo "Success!";
                 }
 
-                header("Location: book.php?p_id={$carte_id_p}");
+                header("Location: adopta_carte.php?p_id={$carte_id_p}");
               }
                ?>
 

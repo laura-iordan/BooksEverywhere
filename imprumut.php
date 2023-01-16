@@ -96,7 +96,7 @@ else
 
     if(isset($_SESSION['rol'])){
       if($_SESSION['rol'] == 1){
-        header("Location: elev/contul_meu.php");
+        header("Location: elev/imprumuturi.php");
       } else if ($_SESSION['rol'] == 2) {
         header("Location: admin/contul_meu.php");
       } else if($_SESSION['rol'] == 3){

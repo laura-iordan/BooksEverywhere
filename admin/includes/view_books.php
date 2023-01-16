@@ -11,7 +11,7 @@
                         <tbody>
                             <?php
                             $user_id = $_SESSION['id'];
-                            $query = "SELECT * FROM donate WHERE id_user_solicitant =0";
+                            $query = "SELECT * FROM donate WHERE id_user_solicitant IS NULL";
                             $select_carti = mysqli_query($connection, $query);
 
                             while($row = mysqli_fetch_assoc($select_carti)){
